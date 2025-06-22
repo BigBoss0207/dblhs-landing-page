@@ -1,0 +1,369 @@
+/* Base Hero Section */
+html body section#hero.hero-section {
+    position: relative !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    padding: 8rem 2rem !important;
+}
+
+/* Background Elements */
+.neuron-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.neuron-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+    z-index: 1;
+}
+
+#neuronCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Content Container */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Title Styles */
+.hero-title {
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.hero-title span {
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    text-align: center;
+}
+
+.hero-title-main {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    color: var(--text-white);
+    font-weight: 600;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+.hero-title-sub {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    color: var(--text-white);
+    font-weight: 600;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+.hero-title-highlight {
+    font-size: clamp(2.8rem, 4vw, 3.5rem);
+    color: var(--rose-gold);
+    font-weight: 700;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.6s;
+    position: relative;
+}
+
+.hero-title span:hover {
+    color: var(--rose-gold);
+    transform: translateX(10px);
+    transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.hero-title-highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 2px;
+    background: var(--rose-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: lineReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.8s;
+    opacity: 0.7;
+}
+
+/* Subtitle Styles */
+.hero-subtitle-wrapper {
+    margin-bottom: 2.5rem;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+    color: var(--text-white);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    word-break: keep-all;
+}
+
+.subtitle-highlight {
+    font-size: clamp(1rem, 1.6vw, 1.6rem);
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    word-break: keep-all;
+}
+
+.hero-subtitle,
+.subtitle-highlight {
+    transition: color 0.4s ease;
+}
+
+.hero-subtitle-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    right: -20px;
+    bottom: -10px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.hero-subtitle-wrapper:hover::before {
+    opacity: 1;
+}
+
+.hero-subtitle-wrapper:hover {
+    transform: translateX(10px);
+}
+
+.hero-subtitle-wrapper:hover .hero-subtitle,
+.hero-subtitle-wrapper:hover .subtitle-highlight {
+    color: var(--rose-gold);
+}
+
+/* CTA Button */
+.cta-wrapper {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1.4s;
+    text-align: center;
+}
+
+.hero-section .cta-button {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background-color: transparent;
+    border: 2px solid var(--rose-gold);
+    color: var(--rose-gold);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-section .cta-button:hover {
+    background-color: var(--rose-gold);
+    color: var(--main-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(224, 191, 184, 0.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineReveal {
+    0% {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scaleX(1);
+        opacity: 0.7;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    html body section#hero.hero-section {
+        padding: 6rem 1.5rem !important;
+    }
+
+    .hero-content {
+        padding: 1.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    html body section#hero.hero-section {
+        padding: 4rem 1rem !important;
+    }
+
+    .hero-content {
+        padding: 1rem 0;
+    }
+}
+
+.hero-image-wrapper {
+    position: relative;
+    width: 40%;
+    max-width: 300px;
+    margin: 0 auto 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 1s;
+    padding: 2rem;
+    margin-top: -1rem;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: 
+        brightness(0.95)
+        contrast(0.95)
+        drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15))
+        opacity(0.92);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    mix-blend-mode: soft-light;
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 2;
+}
+
+/* 이미지 주변 글로우 효과 */
+.hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    right: -30%;
+    bottom: -30%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(224, 191, 184, 0.15) 0%,
+        rgba(224, 191, 184, 0.08) 30%,
+        rgba(224, 191, 184, 0.02) 60%,
+        transparent 100%
+    );
+    filter: blur(20px);
+    z-index: 1;
+    opacity: 0.8;
+    animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+/* 부드러운 페이드 아웃 효과 */
+.hero-image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: 
+        radial-gradient(
+            circle at center,
+            transparent 30%,
+            var(--main-blue) 150%
+        ),
+        linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(26, 43, 76, 0.3) 100%
+        );
+    opacity: 0.7;
+    z-index: 3;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+/* 추가 장식 효과 */
+.hero-image-wrapper > div {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.hero-image-wrapper > div::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border: 1px solid rgba(224, 191, 184, 0.1);
+    border-radius: 2px;
+    backdrop-filter: blur(10px);
+}
+
+.hero-image:hover {
+    transform: translateY(-5px);
+    filter: 
+        brightness(1)
+        contrast(1)
+        drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2))
+        opacity(1);
+    mix-blend-mode: normal;
+}
+
+/* 글로우 애니메이션 */
+@keyframes pulseGlow {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+    100% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
+.hero-cta-button {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background-color: transparent;
+    border: 2px solid var(--rose-gold);
+    color: var(--rose-gold);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-cta-button:hover {
+    background-color: var(--rose-gold);
+    color: var(--main-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(224, 191, 184, 0.2);
+} 

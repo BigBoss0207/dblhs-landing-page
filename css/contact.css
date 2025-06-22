@@ -1,0 +1,240 @@
+/* Contact Section */
+.contact-section {
+    padding: 100px 0;
+    text-align: center;
+    background-color: var(--main-blue);
+}
+
+.contact-section h2 {
+    color: var(--text-light);
+    font-size: 2.5rem;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    background: transparent;
+    border: 2px solid var(--rose-gold);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--rose-gold);
+    transform: translateY(-2px);
+}
+
+.cta-button i {
+    font-size: 1.4rem;
+    color: var(--rose-gold);
+}
+
+.cta-button:hover i {
+    color: var(--text-light);
+}
+
+/* Modal */
+#phoneModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+#phoneModal.show {
+    display: flex !important;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--main-blue);
+    border: 1px solid var(--rose-gold);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+#phoneModal.show .modal-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+    color: var(--rose-gold);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    padding-right: 24px;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+}
+
+.close-modal:hover {
+    color: var(--rose-gold);
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-body p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.phone-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: rgba(224, 191, 184, 0.1);
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    white-space: nowrap;
+}
+
+.phone-number i {
+    color: var(--rose-gold);
+    font-size: 1.5rem;
+}
+
+.phone-number span {
+    color: var(--rose-gold);
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.business-hours {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(224, 191, 184, 0.2);
+    text-align: center;
+}
+
+.business-hours p:first-child {
+    color: var(--rose-gold);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.business-hours p:last-child {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .contact-section h2 {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .modal-content {
+        width: calc(100% - 2rem);
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .phone-number span {
+        font-size: 1.5rem;
+    }
+}
+
+/* Floating Elements */
+.contact-section::before,
+.contact-section::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--rose-gold);
+    border-radius: 50%;
+    opacity: 0.05;
+    filter: blur(80px);
+}
+
+.contact-section::before {
+    top: -100px;
+    right: -100px;
+    animation: float 20s infinite;
+}
+
+.contact-section::after {
+    bottom: -100px;
+    left: -100px;
+    animation: float 15s infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(20px, -20px);
+    }
+    50% {
+        transform: translate(-20px, 20px);
+    }
+    75% {
+        transform: translate(-20px, -20px);
+    }
+} 
